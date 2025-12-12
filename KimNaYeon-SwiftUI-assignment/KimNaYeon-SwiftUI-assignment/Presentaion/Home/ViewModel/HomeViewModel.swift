@@ -8,8 +8,8 @@
 import SwiftUI
 
 final class HomeViewModel: ObservableObject {
-    @Published var menuListModel: [MenuListModel] = MenuListModel.dummy()
-    @Published var martListModel: [MartListModel] = MartListModel.dummy()
+    @Published var menuListModel: [FirstPageListModel] = FirstPageListModel.menuDummy()
+    @Published var martListModel: [FirstPageListModel] = FirstPageListModel.martDummy()
     @Published var oneDishListModel: [OneDishListModel] = OneDishListModel.dummy()
     @Published var recentOrderModel: [LastModel] = LastModel.dummy()
     @Published var discountModel: [LastModel] = []
