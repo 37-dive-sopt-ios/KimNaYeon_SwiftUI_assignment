@@ -8,6 +8,8 @@
 import SwiftUI
 
 final class HomeViewModel: ObservableObject {
+    @Published var selectedCategory: BaeminCategory = .delivery
+
     @Published var menuListModel: [FirstPageListModel] = FirstPageListModel.menuDummy()
     @Published var martListModel: [FirstPageListModel] = FirstPageListModel.martDummy()
     @Published var oneDishListModel: [OneDishListModel] = OneDishListModel.dummy()

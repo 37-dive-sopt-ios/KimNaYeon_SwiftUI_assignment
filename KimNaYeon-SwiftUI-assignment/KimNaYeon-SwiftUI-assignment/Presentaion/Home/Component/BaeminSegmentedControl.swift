@@ -53,6 +53,7 @@ struct BaeminSegmentedControl: View {
                 }
             }
             .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity)
         }
         .scrollIndicators(.hidden)
     }
