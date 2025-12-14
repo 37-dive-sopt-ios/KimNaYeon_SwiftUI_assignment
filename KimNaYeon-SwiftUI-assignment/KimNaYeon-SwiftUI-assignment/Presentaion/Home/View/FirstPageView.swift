@@ -54,9 +54,8 @@ struct FirstPageView: View {
             }
             .frame(height: 96)
             
-            Rectangle()
-                .frame(width: .infinity, height: 10)
-                .foregroundStyle(.baeminbaeminBackgroundWhite)
+            Color.baeminbaeminBackgroundWhite
+                .frame(height: 10)
             
             TabView {
                 ForEach(1...4, id: \.self) { index in
@@ -111,9 +110,8 @@ extension FirstPageView {
     
     private var moreMenu: some View {
         VStack(alignment: .center, spacing: 0) {
-            Rectangle()
-                .frame(width: .infinity, height: 1)
-                .foregroundStyle(.baeminbaeminBackgroundWhite)
+            Color.baeminbaeminBackgroundWhite
+                .frame(height: 1)
             
             HStack(alignment: .center, spacing: 0) {
                 Text("음식배달")
@@ -130,9 +128,8 @@ extension FirstPageView {
             }
             .frame(height: 34)
             
-            Rectangle()
-                .frame(width: .infinity, height: 10)
-                .foregroundStyle(.baeminbaeminBackgroundWhite)
+            Color.baeminbaeminBackgroundWhite
+                .frame(height: 10)
         }
     }
 }

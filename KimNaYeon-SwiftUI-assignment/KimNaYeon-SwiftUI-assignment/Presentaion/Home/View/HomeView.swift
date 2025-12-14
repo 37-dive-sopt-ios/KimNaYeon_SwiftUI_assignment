@@ -12,19 +12,30 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            baeminHeader
-                .padding(.top,9)
-            
-            baeminTextField
-                .padding(.top, 10)
-                .padding(.bottom, 12)
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                FirstPageView(viewModel: viewModel)
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                 
-                SecondPageView(viewModel: viewModel)
+                baeminHeader
+                    .padding(.top, 9)
+        
+                Section(
+                    header: VStack(spacing: 0) {
+                        baeminTextField
+                            .padding(.top, 10)
+                            .padding(.bottom, 12)
+                    }
+                    .background(.baeminbaeminBackgroundWhite)
+                ) {
+                    FirstPageView(viewModel: viewModel)
+                    
+                    SecondPageView(viewModel: viewModel)
+                }
             }
+        }
+        .safeAreaInset(edge: .top) {
+            Color.baeminbaeminBackgroundWhite
+                .frame(height: 0)
         }
         .background(.baeminbaeminBackgroundWhite)
     }
@@ -88,11 +99,5 @@ extension HomeView {
                 .stroke(.baeminBlack, lineWidth: 1)
         }
         .padding(.horizontal, 16)
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: HomeViewModel())
     }
 }

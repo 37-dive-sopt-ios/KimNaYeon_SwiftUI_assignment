@@ -35,9 +35,8 @@ struct SecondPageView: View {
             .frame(height: 120)
             
             VStack(spacing: 0) {
-                Rectangle()
-                    .frame(width: .infinity, height: 10)
-                    .foregroundStyle(.baeminbaeminBackgroundWhite)
+                Color.baeminbaeminBackgroundWhite
+                    .frame(height: 10)
                 
                 OneDish
                 
@@ -89,9 +88,8 @@ extension SecondPageView {
                 .padding(.top, 18)
             }
             
-            Rectangle()
-                .frame(width: .infinity, height: 10)
-                .foregroundStyle(.baeminbaeminBackgroundWhite)
+            Color.baeminbaeminBackgroundWhite
+                .frame(height: 10)
                 .padding(.top, 20)
         }
     }
@@ -134,9 +132,8 @@ extension SecondPageView {
                 .padding(.top, 18)
             }
             
-            Rectangle()
-                .frame(width: .infinity, height: 10)
-                .foregroundStyle(.baeminbaeminBackgroundWhite)
+            Color.baeminbaeminBackgroundWhite
+                .frame(height: 10)
                 .padding(.top, 20)
         }
     }
