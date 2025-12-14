@@ -8,23 +8,23 @@
 import Foundation
 
 struct LastModel: Identifiable, Decodable {
-    var id: Int { LastId }
+    var id: Int { lastId }
     
-    let LastId: Int
-    let LastName: String
-    let LastRate: Float
-    let LastReviewCount: String
-    let LastTime: String
-    let LastTag: [String]
+    let lastId: Int
+    let lastName: String
+    let lastRate: String
+    let lastReviewCount: String
+    let lastTime: String
+    let lastTag: [String]
 }
         
 extension LastModel {
     static func dummy() -> [LastModel] {
         return [
-            LastModel(LastId: 1, LastName: "ASAP PIZZA 구로디지...", LastRate: 5.0, LastReviewCount: "(504)", LastTime: "31~46분", LastTag: ["픽업가능"]),
-            LastModel(LastId: 1, LastName: "레전드 고기한상", LastRate: 5.0, LastReviewCount: "(504)", LastTime: "31~46분", LastTag: ["픽업가능, 예약가능"]),
-            LastModel(LastId: 1, LastName: "파스타예요 영등포...", LastRate: 5.0, LastReviewCount: "(2,851)", LastTime: "31~46분", LastTag: ["소비쿠폰", "픽업가능", "위생인증"]),
-            LastModel(LastId: 1, LastName: "제육고집 신림본점", LastRate: 5.0, LastReviewCount: "(2,851)", LastTime: "31~46분", LastTag: ["소비쿠폰", "픽업가능", "위생인증"])
+            LastModel(lastId: 1, lastName: "ASAP PIZZA 구로디지...", lastRate: "5.0", lastReviewCount: "(5)", lastTime: "31~46분", lastTag: ["픽업가능"]),
+            LastModel(lastId: 2, lastName: "레전드 고기한상", lastRate: "5.0", lastReviewCount: "(504)", lastTime: "31~46분", lastTag: ["픽업가능", "예약가능"]),
+            LastModel(lastId: 3, lastName: "파스타예요 영등포...", lastRate: "5.0", lastReviewCount: "(2,851)", lastTime: "31~46분", lastTag: ["소비쿠폰", "픽업가능"]),
+            LastModel(lastId: 4, lastName: "제육고집 신림본점", lastRate: "5.0", lastReviewCount: "(2,851)", lastTime: "31~46분", lastTag: ["소비쿠폰", "픽업가능"])
             ]
     }
 }

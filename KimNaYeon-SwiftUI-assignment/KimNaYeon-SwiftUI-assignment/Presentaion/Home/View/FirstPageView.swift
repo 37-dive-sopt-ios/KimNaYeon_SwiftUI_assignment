@@ -21,7 +21,7 @@ struct FirstPageView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             header
-                .padding(.top, 24)
+                .padding(.top, 12)
                 .padding(.bottom, 32)
                 .background(
                     LinearGradient(colors: [
@@ -70,6 +70,7 @@ struct FirstPageView: View {
             .frame(height: 114)
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
+        .background(.baeminWhite)
     }
 }
 
@@ -133,11 +134,5 @@ extension FirstPageView {
                 .frame(width: .infinity, height: 10)
                 .foregroundStyle(.baeminbaeminBackgroundWhite)
         }
-    }
-}
-
-struct FirstPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstPageView(viewModel: HomeViewModel())
     }
 }

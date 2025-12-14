@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @ObservedObject var viewModel: HomeViewModel
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             baeminHeader
@@ -15,7 +18,13 @@ struct HomeView: View {
             
             baeminTextField
                 .padding(.top, 10)
-            Spacer()
+                .padding(.bottom, 12)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                FirstPageView(viewModel: viewModel)
+                
+                SecondPageView(viewModel: viewModel)
+            }
         }
         .background(.baeminbaeminBackgroundWhite)
     }
@@ -70,11 +79,20 @@ extension HomeView {
         }
         .padding(.horizontal, 17)
         .frame(height: 40)
-        .background(.baeminWhite)
+        .background {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.baeminWhite)
+        }
         .overlay {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.baeminBlack, lineWidth: 1)
         }
         .padding(.horizontal, 16)
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(viewModel: HomeViewModel())
     }
 }

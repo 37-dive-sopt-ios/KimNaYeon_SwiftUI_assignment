@@ -24,7 +24,7 @@ struct RootView: View {
     private var contentView: some View {
         switch tabBarViewModel.selectedTab {
         case .home:
-            HomeView()
+            HomeView(viewModel: HomeViewModel())
         case .shopping:
             ShoppingView
         case .jjim:

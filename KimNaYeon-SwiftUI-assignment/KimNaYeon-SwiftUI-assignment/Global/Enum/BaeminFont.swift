@@ -13,11 +13,14 @@ enum BaeminFont {
     case head_b_18
     case head_b_16
     case head_b_14
+    case head_b_13
 
     case title_sb_18
     case title_sb_10
 
     case body_r_14
+    case body_r_13
+    case body_r_12
     case body_r_10
 
     var font: Font {
@@ -30,6 +33,8 @@ enum BaeminFont {
             return .custom("Pretendard-Bold", size: 16)
         case .head_b_14:
             return .custom("Pretendard-Bold", size: 14)
+        case .head_b_13:
+            return .custom("Pretendard-Bold", size: 13)
 
         case .title_sb_18:
             return .custom("Pretendard-SemiBold", size: 18)
@@ -38,6 +43,10 @@ enum BaeminFont {
             
         case .body_r_14:
             return .custom("Pretendard-Regular", size: 14)
+        case .body_r_13:
+            return .custom("Pretendard-Regular", size: 13)
+        case .body_r_12:
+            return .custom("Pretendard-Regular", size: 12)
         case .body_r_10:
             return .custom("Pretendard-Regular", size: 10)
         }
@@ -47,11 +56,11 @@ enum BaeminFont {
         switch self {
         case .head_b_24, .head_b_18, .head_b_16:
             return -0.02
-        case .title_sb_18:
+        case .title_sb_18, .body_r_13:
             return -0.03
         case .title_sb_10:
             return -0.06
-        case .head_b_14, .body_r_14, .body_r_10:
+        case .head_b_14, .head_b_13, .body_r_14, .body_r_12, .body_r_10:
             return -0.04
         }
     }
@@ -66,6 +75,10 @@ enum BaeminFont {
             return 16
         case .head_b_14, .body_r_14:
             return 14
+        case .head_b_13, .body_r_13:
+            return 13
+        case .body_r_12:
+            return 12
         case .title_sb_10, .body_r_10:
             return 10
         }
