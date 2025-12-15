@@ -12,20 +12,20 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
-                
                 baeminHeader
-                    .padding(.top, 9)
-        
+                    .padding(.top, 54)
+                
                 Section(
                     header: VStack(spacing: 0) {
                         baeminTextField
                             .padding(.top, 10)
                             .padding(.bottom, 12)
                     }
+                    .frame(maxWidth: .infinity)
                     .background(.baeminbaeminBackgroundWhite)
+                    .ignoresSafeArea(edges: .top)
                 ) {
                     FirstPageView(viewModel: viewModel)
                     
@@ -33,10 +33,7 @@ struct HomeView: View {
                 }
             }
         }
-        .safeAreaInset(edge: .top) {
-            Color.baeminbaeminBackgroundWhite
-                .frame(height: 0)
-        }
+        .ignoresSafeArea()
         .background(.baeminbaeminBackgroundWhite)
     }
 }
@@ -84,7 +81,6 @@ extension HomeView {
             Spacer()
             
             Image(.search)
-                .resizable()
                 .scaledToFit()
                 .frame(width: 24, height: 24)
         }
