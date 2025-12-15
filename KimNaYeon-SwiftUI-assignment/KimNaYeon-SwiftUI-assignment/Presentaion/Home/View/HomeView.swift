@@ -13,9 +13,13 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
+
+            ZStack {
                 baeminHeader
                     .padding(.top, 54)
+            }
+            
+            LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                 
                 Section(
                     header: VStack(spacing: 0) {
@@ -33,8 +37,8 @@ struct HomeView: View {
                 }
             }
         }
-        .ignoresSafeArea()
         .background(.baeminbaeminBackgroundWhite)
+        .clipped()
     }
 }
 
