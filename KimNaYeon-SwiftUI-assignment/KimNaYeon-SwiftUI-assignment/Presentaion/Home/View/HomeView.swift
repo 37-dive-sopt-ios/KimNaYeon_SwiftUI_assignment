@@ -10,26 +10,33 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var viewModel: HomeViewModel
+    @State private var offsetY: CGFloat = CGFloat.zero
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-
-            ZStack {
-                baeminHeader
-                    .padding(.top, 54)
+            
+            GeometryReader { geometry in
+                let offset = geometry.frame(in: .global).minY
+                setOffset(offset: offset)
+                ZStack {
+                    baeminHeader
+                        .padding(.top, 9)
+                }
             }
+            .frame(height: 33)
+            .background(.baeminbaeminBackgroundWhite)
             
             LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                 
                 Section(
                     header: VStack(spacing: 0) {
                         baeminTextField
-                            .padding(.top, 10)
+                            .padding(.top, 5)
                             .padding(.bottom, 12)
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(.baeminbaeminBackgroundWhite)
-                    .ignoresSafeArea(edges: .top)
+                        .frame(maxWidth: .infinity)
+                        .background(.baeminbaeminBackgroundWhite)
+                        .ignoresSafeArea(edges: .top)
                 ) {
                     FirstPageView(viewModel: viewModel)
                     
@@ -38,7 +45,21 @@ struct HomeView: View {
             }
         }
         .background(.baeminbaeminBackgroundWhite)
-        .clipped()
+        .overlay(
+            Rectangle()
+                .foregroundColor(.baeminbaeminBackgroundWhite)
+                .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
+                .edgesIgnoringSafeArea(.all)
+                .opacity(offsetY > -35 ? 0 : 1)
+            , alignment: .top
+        )
+    }
+    
+    func setOffset(offset: CGFloat) -> some View {
+        DispatchQueue.main.async {
+            self.offsetY = offset
+        }
+        return EmptyView()
     }
 }
 
