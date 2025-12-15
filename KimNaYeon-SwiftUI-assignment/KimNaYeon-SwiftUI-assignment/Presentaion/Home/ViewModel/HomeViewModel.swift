@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+@MainActor
 final class HomeViewModel: ObservableObject {
     @Published var selectedCategory: BaeminCategory = .delivery
+    @Published var offsetY: CGFloat = CGFloat.zero
 
     @Published var menuListModel: [FirstPageListModel] = FirstPageListModel.menuDummy()
     @Published var martListModel: [FirstPageListModel] = FirstPageListModel.martDummy()
@@ -19,5 +21,14 @@ final class HomeViewModel: ObservableObject {
     init() {
         let dummy = LastModel.dummy()
         discountModel = dummy.sorted { $0.id > $1.id }
+    }
+}
+
+extension HomeViewModel {
+    func setOffset(offset: CGFloat) -> some View {
+        DispatchQueue.main.async {
+            self.offsetY = offset
+        }
+        return EmptyView()
     }
 }

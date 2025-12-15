@@ -10,17 +10,18 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var viewModel: HomeViewModel
-    @State private var offsetY: CGFloat = CGFloat.zero
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             
             GeometryReader { geometry in
                 let offset = geometry.frame(in: .global).minY
-                setOffset(offset: offset)
                 ZStack {
                     baeminHeader
                         .padding(.top, 9)
+                }
+                .onChange(of: offset) { newValue in
+                    viewModel.setOffset(offset: newValue)
                 }
             }
             .frame(height: 33)
@@ -50,16 +51,9 @@ struct HomeView: View {
                 .foregroundColor(.baeminbaeminBackgroundWhite)
                 .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
                 .edgesIgnoringSafeArea(.all)
-                .opacity(offsetY > -35 ? 0 : 1)
+                .opacity(viewModel.offsetY > -35 ? 0 : 1)
             , alignment: .top
         )
-    }
-    
-    func setOffset(offset: CGFloat) -> some View {
-        DispatchQueue.main.async {
-            self.offsetY = offset
-        }
-        return EmptyView()
     }
 }
 
